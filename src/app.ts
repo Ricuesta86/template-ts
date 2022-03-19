@@ -1,9 +1,12 @@
-import dotenv from 'dotenv';
-import {Server} from './models/server';
+import  express ,{ Application} from 'express';
+import routerUsuario from './routers/usuario';
 
 
-dotenv.config();
+const app: Application = express();
 
-const server= new Server();
+app.use(express.json());
+app.use(express.urlencoded());
 
-server.listen();
+app.use('/api/usuarios', routerUsuario);
+
+export default app;
